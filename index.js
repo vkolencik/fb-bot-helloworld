@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 var key = fs.readFileSync('encryption/57300508_jorgwai.freemyip.com.key');
-var cert = fs.readFileSync( 'encryption/57300508_jorgwai.freemyip.com.crt' );
+var cert = fs.readFileSync( 'encryption/57300508_jorgwai.freemyip.com.cert' );
 var options = {
     key: key,
     cert: cert
