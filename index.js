@@ -139,7 +139,12 @@ function handlePostback(sender_psid, received_postback) {
         response = { "text": "Thanks!" }
     } else if (payload === 'no') {
         response = { "text": "Oops, try sending another image." }
+    } else if (payload === "jidlo") {
+        response = { "text": "Tumáš: 🍕"}
+    } else if (payload === "piti") {
+        response = { "text" : "Už se to nese: 🍺"};
     }
+
     // Send the message to acknowledge the postback
     callSendAPI(sender_psid, response);
 }
@@ -173,7 +178,25 @@ function callProfileAPI() {
         "greeting": [{
             "locale":"default",
             "text":"Ahoj!"
-        }]
+        }],
+        "get_started": {
+            "payload" : {
+                "template_type": "generic",
+                "elements": [{"title": "Co si dáš?"}],
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Něco na zub",
+                        "payload": "jidlo",
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Něco k pití",
+                        "payload": "piti",
+                    }
+                ]
+            }
+        }
     };
 
     request({
