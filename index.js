@@ -3,9 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
-const fs = require('fs');
 const app = express();
-var https = require('https');
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
@@ -13,15 +11,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Process application/json
 app.use(bodyParser.json());
 
-var key = fs.readFileSync('encryption/57300508_jorgwai.freemyip.com.key');
-var cert = fs.readFileSync( 'encryption/57300508_jorgwai.freemyip.com.cert' );
-var options = {
-    key: key,
-    cert: cert
-};
 // Sets server port and logs message on success
-//app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
-https.createServer(options, app).listen(1337, () => console.log('webhook is listening'));
+app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
