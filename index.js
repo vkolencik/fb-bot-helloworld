@@ -140,6 +140,7 @@ function handlePostback(sender_psid, received_postback) {
     } else if (payload === 'no') {
         response = { "text": "Oops, try sending another image." }
     } else if (payload === "getStartedPostback") {
+        console.log("get started postback");
         response = {
             "attachment": {
                 "type": "template",
