@@ -18,6 +18,7 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 app.post('/webhook', (req, res) => {
 
     let body = req.body;
+    console.log("Received POST request:\n" + body);
 
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
@@ -42,6 +43,8 @@ app.post('/webhook', (req, res) => {
 
 // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
+
+    console.log("Received GET request:\n" + req.query);
 
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = "xFRy8KQUgpF4uKoS63za";
