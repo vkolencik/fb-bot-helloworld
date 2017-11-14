@@ -177,7 +177,7 @@ function callProfileAPI() {
     };
 
     request({
-        "uri": "https://graph.facebook.com/v2.6/me/messenger_profile"
+        "uri": "https://graph.facebook.com/v2.6/me/messenger_profile",
         "qs": { "access_token": PAGE_ACCESS_TOKEN },
         "method": "POST",
         "json": request_body
