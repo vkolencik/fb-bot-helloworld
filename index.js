@@ -15,6 +15,8 @@ app.use(bodyParser.json());
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
+callProfileAPI();
+
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
 
@@ -162,6 +164,28 @@ function callSendAPI(sender_psid, response) {
             console.log('message sent!')
         } else {
             console.error("Unable to send message:" + err);
+        }
+    });
+}
+
+function callProfileAPI() {
+    let request_body = {
+        "greeting": [{
+            "locale":"default",
+            "text":"Ahoj!"
+        }]
+    };
+
+    request({
+        "uri": "https://graph.facebook.com/v2.6/me/messenger_profile"
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log("Profile API set successfully")
+        } else {
+            console.error("Unable to access profile api:" + err);
         }
     });
 }
