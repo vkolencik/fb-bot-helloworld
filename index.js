@@ -141,19 +141,24 @@ function handlePostback(sender_psid, received_postback) {
         response = { "text": "Oops, try sending another image." }
     } else if (payload === "getStartedPostback") {
         response = {
-            "template_type": "generic",
-            "elements": [{"title": "Co si dáš?"}],
-            "buttons": [
-            {
-                "type": "postback",
-                "title": "Něco na zub",
-                "payload": "jidlo",
-            },
-            {
-                "type": "postback",
-                "title": "Něco k pití",
-                "payload": "piti",
-            }]
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "title": "Co si dáš?",
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Něco na zub",
+                            "payload": "jidlo",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Něco k pití",
+                            "payload": "piti",
+                        }]
+                }
+            }
         }
     }
     else if (payload === "jidlo") {
