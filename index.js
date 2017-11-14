@@ -146,18 +146,20 @@ function handlePostback(sender_psid, received_postback) {
                 "type": "template",
                 "payload": {
                     "template_type": "generic",
-                    "title": "Co si dáš?",
-                    "buttons": [
-                        {
-                            "type": "postback",
-                            "title": "Něco na zub",
-                            "payload": "jidlo",
-                        },
-                        {
-                            "type": "postback",
-                            "title": "Něco k pití",
-                            "payload": "piti",
-                        }]
+                    "elements": [{
+                        "title": "Co si dáš?",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Něco na zub",
+                                "payload": "jidlo",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "Něco k pití",
+                                "payload": "piti",
+                            }]
+                    }]
                 }
             }
         }
